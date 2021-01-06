@@ -43,12 +43,12 @@
         app:layout_constraintTop_toBottomOf="@+id/et_id1" />
 
     <EditText
-        android:id="@+id/et_age"
+        android:id="@+id/et_email2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
         android:ems="10"
-        android:hint="age"
+        android:hint="email"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="@+id/et_name"
         app:layout_constraintStart_toStartOf="@+id/et_name"
@@ -60,7 +60,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
         android:text="register"
-        app:layout_constraintEnd_toEndOf="@+id/et_age"
-        app:layout_constraintStart_toStartOf="@+id/et_age"
-        app:layout_constraintTop_toBottomOf="@+id/et_age" />
+        app:layout_constraintEnd_toEndOf="@+id/et_email2"
+        app:layout_constraintStart_toStartOf="@+id/et_email2"
+        app:layout_constraintTop_toBottomOf="@+id/et_email2" />
 </androidx.constraintlayout.widget.ConstraintLayout>
