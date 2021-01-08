@@ -18,7 +18,7 @@ import org.json.JSONObject;
 
 public class registerActivity extends AppCompatActivity {
 
-    private EditText et_id1,et_password1,et_name,et_age,et_email2;
+    private EditText et_id1,et_password1,et_name,et_email2;
     private Button bt_register1;
 
     @Override
@@ -29,7 +29,7 @@ public class registerActivity extends AppCompatActivity {
         et_id1 = findViewById(R.id.et_id1);
         et_password1 = findViewById(R.id.et_password1);
         et_name = findViewById(R.id.et_name);
-        et_age = findViewById(R.id.et_age);
+        //et_age = findViewById(R.id.et_age);
         et_email2 = findViewById(R.id.et_email2);
 
         bt_register1 = findViewById(R.id.bt_register1);
@@ -39,7 +39,7 @@ public class registerActivity extends AppCompatActivity {
                 String userID = et_id1.getText().toString();
                 String userPassword = et_password1.getText().toString();
                 String userName = et_name.getText().toString();
-                int userAge = Integer.parseInt(et_age.getText().toString());
+                //int userAge = Integer.parseInt(et_age.getText().toString());
                 String userEmail = et_email2.getText().toString();
 
                 Response.Listener<String> responseListener = new Response.Listener<String>() {
@@ -62,7 +62,7 @@ public class registerActivity extends AppCompatActivity {
                         }
                     }
                 };
-                RegisterRequest registerRequest = new RegisterRequest(userID,userPassword,userName,userAge,userEmail,responseListener);
+                RegisterRequest registerRequest = new RegisterRequest(userID,userPassword,userName,userEmail,responseListener);
                 RequestQueue queue = Volley.newRequestQueue(registerActivity.this);
                 queue.add(registerRequest);
             }
