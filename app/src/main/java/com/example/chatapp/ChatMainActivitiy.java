@@ -6,22 +6,41 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toolbar;
 
+import java.util.ArrayList;
+
 public class ChatMainActivitiy extends AppCompatActivity {
 
-    static final String[] LIST_MENU = {"LIST1", "LIST2", "LIST3"} ;
+    private ArrayList<UserData> arrayList;
+    private RecyclerAdapter recyclerAdapter;
+    private RecyclerView recyclerView;
+    private LinearLayoutManager linearLayoutManager;
+
+    private MainActivity mA;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chat_main_activitiy);
 
-        RecyclerView recyclerView = findViewById(R.id.RecyclerView);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-      //  recyclerView.setAdapter(new RecyclerAdapter());
+        recyclerView = findViewById(R.id.RecyclerView);
+        linearLayoutManager = new LinearLayoutManager(this);
+        recyclerView.setLayoutManager(linearLayoutManager);
+
+        arrayList = new ArrayList<>();
+
+        recyclerAdapter = new RecyclerAdapter(arrayList);
+        recyclerView.setAdapter(recyclerAdapter);
+
+        mA = (MainActivity)getApplicationContext();
+        UserData userData = new UserData(R.id.image,mA.userID,mA.userPassword);
+        arrayList.add(userData);
+        recyclerAdapter.notifyDataSetChanged();
     }
 }

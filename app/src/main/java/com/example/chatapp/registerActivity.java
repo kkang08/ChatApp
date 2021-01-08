@@ -19,6 +19,7 @@ import org.json.JSONObject;
 public class registerActivity extends AppCompatActivity {
 
     private EditText et_id1,et_password1,et_name,et_email2;
+   // public String userName, userEmail;
     private Button bt_register1;
 
     @Override

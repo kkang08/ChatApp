@@ -20,6 +20,7 @@ public class MainActivity extends AppCompatActivity {
 
     private EditText et_Id, et_password;
     private Button bt_login, bt_register;
+    //public String userID, userPassword;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,8 +38,6 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 String userID = et_Id.getText().toString();
                 String userPassword = et_password.getText().toString();
-
-
 
                 Response.Listener<String> responseListener = new Response.Listener<String>() {
                     @Override

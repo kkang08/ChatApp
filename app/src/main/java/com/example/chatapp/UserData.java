@@ -10,6 +10,9 @@ public class UserData {
         this.et_email = et_email;
     }
 
+    /*public UserData(int image, int et_name, int et_email2) {
+    }*/
+
     public int getImage() {
         return image;
     }
