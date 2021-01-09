@@ -91,7 +91,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.Custom
             et_name.setText(arrayList.get(URL.indexOf("userName")).getEt_name());
             et_email.setText(arrayList.get(URL.indexOf("userEmail")).getEt_email());
 
-            return;
+           // return;
         }
     }
 
