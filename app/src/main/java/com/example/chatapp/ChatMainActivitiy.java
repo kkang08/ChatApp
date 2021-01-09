@@ -12,7 +12,11 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toolbar;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
+import java.util.Map;
 
 public class ChatMainActivitiy extends AppCompatActivity {
 
@@ -21,7 +25,7 @@ public class ChatMainActivitiy extends AppCompatActivity {
     private RecyclerView recyclerView;
     private LinearLayoutManager linearLayoutManager;
 
-    private MainActivity mA;
+    //private MainActivity mA;
 
 
     @Override
@@ -38,9 +42,28 @@ public class ChatMainActivitiy extends AppCompatActivity {
         recyclerAdapter = new RecyclerAdapter(arrayList);
         recyclerView.setAdapter(recyclerAdapter);
 
-        mA = (MainActivity)getApplicationContext();
-        UserData userData = new UserData(R.id.image,mA.userID,mA.userPassword);
+      //  mA = (MainActivity)getApplicationContext();
+        /*UserData userData = new UserData(R.id.image,mA.userID,mA.userPassword);
         arrayList.add(userData);
-        recyclerAdapter.notifyDataSetChanged();
+        recyclerAdapter.notifyDataSetChanged();*/
+        try {
+            JSONObject jsonObject = new JSONObject((Map) arrayList);
+            JSONArray jsonArray = jsonObject.getJSONArray(("response"));
+            int count =0;
+            String userName, userEmail;
+            while(count < jsonArray.length())
+            {
+                JSONObject object = jsonArray.getJSONObject(count);
+                userName = object.getString("userName");
+                userEmail = object.getString("userEmail");
+                UserData user = new UserData(R.layout.user_image, arrayList);
+                arrayList.add(user);
+                count++;
+
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }

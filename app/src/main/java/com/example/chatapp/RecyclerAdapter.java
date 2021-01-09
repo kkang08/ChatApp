@@ -4,7 +4,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -16,7 +15,7 @@ import java.util.ArrayList;
 public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.CustomViewHolder> {
 
     private ArrayList<UserData> arrayList;
-
+    final static private String URL = "http://kkang.dothome.co.kr/imformation.php";
     public RecyclerAdapter(ArrayList<UserData> arrayList) {
         this.arrayList = arrayList;
     }
@@ -34,14 +33,14 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.Custom
     public void onBindViewHolder(@NonNull RecyclerAdapter.CustomViewHolder holder, int position) {
 
         holder.image.setImageResource(arrayList.get(position).getImage());
-        holder.et_num.setText(arrayList.get(position).getEt_num());
-        holder.et_email.setText(arrayList.get(position).getEt_email());
+        /*holder.et_name.setText(arrayList.get(position).getEt_name());
+        holder.et_email.setText(arrayList.get(position).getEt_email());*/
 
         holder.itemView.setTag(position);
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String curName = holder.et_num.getText().toString();
+                String curName = holder.et_name.getText().toString();
                 Toast.makeText(v.getContext(),curName,Toast.LENGTH_SHORT).show();
             }
         });
@@ -72,13 +71,13 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.Custom
     public class CustomViewHolder extends RecyclerView.ViewHolder {
 
         protected ImageView image;
-        protected TextView et_num, et_email;
+        protected TextView et_name, et_email;
 
         public CustomViewHolder(@NonNull View itemView)
         {
             super(itemView);
             this.image = (ImageView)itemView.findViewById(R.id.image);
-            this.et_num = (TextView)itemView.findViewById(R.id.et_num);
+            this.et_name = (TextView)itemView.findViewById(R.id.et_name);
             this.et_email = (TextView)itemView.findViewById(R.id.et_email);
         }
     }

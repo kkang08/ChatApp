@@ -1,17 +1,17 @@
 package com.example.chatapp;
 
+import java.util.ArrayList;
+
 public class UserData {
+
     private int image;
-    private String et_num, et_email;
+    private ArrayList<UserData> arrayList;
+    //private String et_name, et_email;
 
-    public UserData(int image, String et_num, String et_email) {
+    public UserData(int image, ArrayList<UserData> arrayList) {
         this.image = image;
-        this.et_num = et_num;
-        this.et_email = et_email;
+        this.arrayList = arrayList;
     }
-
-    /*public UserData(int image, int et_name, int et_email2) {
-    }*/
 
     public int getImage() {
         return image;
@@ -21,19 +21,19 @@ public class UserData {
         this.image = image;
     }
 
-    public String getEt_num() {
-        return et_num;
+    public ArrayList<UserData> getArrayList() {
+        return arrayList;
     }
 
-    public void setEt_num(String et_num) {
-        this.et_num = et_num;
+    public void setArrayList(ArrayList<UserData> arrayList) {
+        this.arrayList = arrayList;
     }
 
-    public String getEt_email() {
-        return et_email;
-    }
-
-    public void setEt_email(String et_email) {
-        this.et_email = et_email;
+    @Override
+    public String toString() {
+        return "UserData{" +
+                "image=" + image +
+                ", arrayList=" + arrayList +
+                '}';
     }
 }
