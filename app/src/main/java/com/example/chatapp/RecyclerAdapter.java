@@ -10,21 +10,27 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.lang.reflect.Method;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.CustomViewHolder> {
 
-    private ArrayList<UserData> arrayList;
     final static private String URL = "http://kkang.dothome.co.kr/imformation.php";
+    private Map<String, String> map;
+
+    private ArrayList<UserData> arrayList;
     public RecyclerAdapter(ArrayList<UserData> arrayList) {
         this.arrayList = arrayList;
     }
+
 
     @NonNull
     @Override
     public RecyclerAdapter.CustomViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.user_image,parent,false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.user_image,parent,true);
         CustomViewHolder holder = new CustomViewHolder(view);
         return holder;
     }
@@ -33,8 +39,8 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.Custom
     public void onBindViewHolder(@NonNull RecyclerAdapter.CustomViewHolder holder, int position) {
 
         holder.image.setImageResource(arrayList.get(position).getImage());
-        /*holder.et_name.setText(arrayList.get(position).getEt_name());
-        holder.et_email.setText(arrayList.get(position).getEt_email());*/
+        holder.et_name.setText(arrayList.get(position).getEt_name());
+        holder.et_email.setText(arrayList.get(position).getEt_email());
 
         holder.itemView.setTag(position);
         holder.itemView.setOnClickListener(new View.OnClickListener() {
@@ -79,6 +85,10 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.Custom
             this.image = (ImageView)itemView.findViewById(R.id.image);
             this.et_name = (TextView)itemView.findViewById(R.id.et_name);
             this.et_email = (TextView)itemView.findViewById(R.id.et_email);
+
+            et_name.setText(arrayList.get(Integer.parseInt("userName")).getEt_name());
+            et_email.setText(arrayList.get(Integer.parseInt("userEmail")).getEt_email());
+
         }
     }
 

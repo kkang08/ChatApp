@@ -5,12 +5,13 @@ import java.util.ArrayList;
 public class UserData {
 
     private int image;
-    private ArrayList<UserData> arrayList;
-    //private String et_name, et_email;
+    //private ArrayList<UserData> arrayList;
+    private String et_name, et_email;
 
-    public UserData(int image, ArrayList<UserData> arrayList) {
+    public UserData(int image, String et_name, String et_email) {
         this.image = image;
-        this.arrayList = arrayList;
+        this.et_name = et_name;
+        this.et_email = et_email;
     }
 
     public int getImage() {
@@ -20,20 +21,20 @@ public class UserData {
     public void setImage(int image) {
         this.image = image;
     }
-
-    public ArrayList<UserData> getArrayList() {
-        return arrayList;
+    public String getEt_name() {
+        return et_name;
     }
 
-    public void setArrayList(ArrayList<UserData> arrayList) {
-        this.arrayList = arrayList;
+    public void setEt_name(String et_name) {
+        this.et_name = et_name;
     }
 
-    @Override
-    public String toString() {
-        return "UserData{" +
-                "image=" + image +
-                ", arrayList=" + arrayList +
-                '}';
+    public String getEt_email() {
+        return et_email;
     }
+
+    public void setEt_email(String et_email) {
+        this.et_email = et_email;
+    }
+
 }

@@ -56,7 +56,7 @@ public class ChatMainActivitiy extends AppCompatActivity {
                 JSONObject object = jsonArray.getJSONObject(count);
                 userName = object.getString("userName");
                 userEmail = object.getString("userEmail");
-                UserData user = new UserData(R.layout.user_image, arrayList);
+                UserData user = new UserData(R.layout.user_image, userName,userEmail);
                 arrayList.add(user);
                 count++;
 
