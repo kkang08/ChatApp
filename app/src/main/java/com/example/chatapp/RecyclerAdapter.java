@@ -10,6 +10,9 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.android.volley.Request;
+import com.android.volley.Response;
+
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -18,7 +21,6 @@ import java.util.Map;
 public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.CustomViewHolder> {
 
     final static private String URL = "http://kkang.dothome.co.kr/imformation.php";
-    private Map<String, String> map;
 
     private ArrayList<UserData> arrayList;
     public RecyclerAdapter(ArrayList<UserData> arrayList) {
@@ -86,9 +88,10 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.Custom
             this.et_name = (TextView)itemView.findViewById(R.id.et_name);
             this.et_email = (TextView)itemView.findViewById(R.id.et_email);
 
-            et_name.setText(arrayList.get(Integer.parseInt("userName")).getEt_name());
-            et_email.setText(arrayList.get(Integer.parseInt("userEmail")).getEt_email());
+            et_name.setText(arrayList.get(URL.indexOf("userName")).getEt_name());
+            et_email.setText(arrayList.get(URL.indexOf("userEmail")).getEt_email());
 
+            return;
         }
     }
 
