@@ -24,7 +24,7 @@ public class ChatMainActivitiy extends AppCompatActivity {
     private ArrayList<UserData> arrayList;
     private RecyclerAdapter recyclerAdapter;
     private RecyclerView recyclerView;
-    private LinearLayoutManager linearLayoutManager;
+    //private LinearLayoutManager linearLayoutManager;
 
     //private MainActivity mA;
 
@@ -49,9 +49,10 @@ public class ChatMainActivitiy extends AppCompatActivity {
         recyclerAdapter.notifyDataSetChanged();*/
         try {
             Toast.makeText(getApplicationContext(),"여기까진 되는듯#1-1",Toast.LENGTH_SHORT).show();
-            JSONObject jsonObject = new JSONObject(intent.getStringExtra("arrayList"));
-            JSONArray jsonArray = jsonObject.getJSONArray(("response"));
+            JSONObject jsonObject = new JSONObject(intent.getStringExtra("response"));
             Toast.makeText(getApplicationContext(),"여기까진 되는듯#1-2",Toast.LENGTH_SHORT).show();
+            JSONArray jsonArray = jsonObject.getJSONArray(("response"));
+            Toast.makeText(getApplicationContext(),"여기까진 되는듯#1-3",Toast.LENGTH_SHORT).show();
             int count =0;
             String userName, userEmail;
             while(count < jsonArray.length())
@@ -61,6 +62,7 @@ public class ChatMainActivitiy extends AppCompatActivity {
                 userEmail = object.getString("userEmail");
                 UserData user = new UserData(R.layout.user_image, userName,userEmail);
                 arrayList.add(user);
+                recyclerAdapter.notifyDataSetChanged();//(-)
 
                 Toast.makeText(getApplicationContext(),"여기까진 되는듯#2",Toast.LENGTH_SHORT).show();
                 count++;

@@ -27,8 +27,37 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.Custom
         this.arrayList = arrayList;
     }
 
-
     @NonNull
+    @Override
+    public RecyclerAdapter.CustomViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.user_image,parent,false);
+        CustomViewHolder holder = new CustomViewHolder(view);
+        return holder;
+    }
+
+    @Override
+    public void onBindViewHolder(@NonNull RecyclerAdapter.CustomViewHolder holder, int position) {
+
+        holder.itemview(arrayList.get(position));
+    }
+
+    @Override
+    public int getItemCount() {
+        return arrayList.size();
+    }
+
+    public class CustomViewHolder extends RecyclerView.ViewHolder {
+        public CustomViewHolder(@NonNull View itemView) {
+            super(itemView);
+        }
+
+
+        public void itemview(UserData userData) {
+        }
+    }
+
+
+    /*@NonNull
     @Override
     public RecyclerAdapter.CustomViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
@@ -94,5 +123,5 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.Custom
            // return;
         }
     }
-
+*/
 }
