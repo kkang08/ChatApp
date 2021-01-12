@@ -24,8 +24,7 @@ public class ChatMainActivitiy extends AppCompatActivity {
     private ArrayList<UserData> arrayList;
     private RecyclerAdapter recyclerAdapter;
     private RecyclerView recyclerView;
-    //private LinearLayoutManager linearLayoutManager;
-
+    private LinearLayoutManager linearLayoutManager;
     //private MainActivity mA;
 
 
@@ -35,19 +34,19 @@ public class ChatMainActivitiy extends AppCompatActivity {
         setContentView(R.layout.activity_chat_main_activitiy);
 
         recyclerView = findViewById(R.id.RecyclerView);
-      //  linearLayoutManager = new LinearLayoutManager(this);
-        //recyclerView.setLayoutManager(linearLayoutManager);
-        Intent intent = getIntent();
+        linearLayoutManager = new LinearLayoutManager(this);
+        recyclerView.setLayoutManager(linearLayoutManager);
+        //Intent intent = getIntent();
 
         arrayList = new ArrayList<>();
         recyclerAdapter = new RecyclerAdapter(arrayList);
         recyclerView.setAdapter(recyclerAdapter);
-        Toast.makeText(getApplicationContext(),"여기까진 되는듯#1",Toast.LENGTH_SHORT).show();
+        //Toast.makeText(getApplicationContext(),"여기까진 되는듯#1",Toast.LENGTH_SHORT).show();
       //  mA = (MainActivity)getApplicationContext();
         /*UserData userData = new UserData(R.id.image,mA.userID,mA.userPassword);
         arrayList.add(userData);
         recyclerAdapter.notifyDataSetChanged();*/
-        try {
+        /*try {
             Toast.makeText(getApplicationContext(),"여기까진 되는듯#1-1",Toast.LENGTH_SHORT).show();
             JSONObject jsonObject = new JSONObject(intent.getStringExtra("response"));
             Toast.makeText(getApplicationContext(),"여기까진 되는듯#1-2",Toast.LENGTH_SHORT).show();
@@ -71,6 +70,6 @@ public class ChatMainActivitiy extends AppCompatActivity {
 
         } catch (Exception e) {
             e.printStackTrace();
-        }
+        }*/
     }
 }

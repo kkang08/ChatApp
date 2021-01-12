@@ -39,6 +39,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.Custom
     public void onBindViewHolder(@NonNull RecyclerAdapter.CustomViewHolder holder, int position) {
 
         holder.itemview(arrayList.get(position));
+
     }
 
     @Override
@@ -47,12 +48,22 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.Custom
     }
 
     public class CustomViewHolder extends RecyclerView.ViewHolder {
+
+        private ImageView image;
+        private TextView et_name, et_email;
+
         public CustomViewHolder(@NonNull View itemView) {
             super(itemView);
+
+            image = itemView.findViewById(R.id.image);
+            et_name = itemView.findViewById(R.id.et_name);
+            et_email = itemView.findViewById(R.id.et_email);
         }
 
-
         public void itemview(UserData userData) {
+            image.setImageResource(userData.getImage());
+            et_name.setText(userData.getEt_name());
+            et_email.setText(userData.getEt_email());
         }
     }
 

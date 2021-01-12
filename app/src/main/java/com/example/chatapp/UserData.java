@@ -21,6 +21,7 @@ public class UserData {
     public void setImage(int image) {
         this.image = image;
     }
+
     public String getEt_name() {
         return et_name;
     }
