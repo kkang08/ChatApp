@@ -13,6 +13,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.Toolbar;
 
+import com.android.volley.RequestQueue;
+import com.android.volley.toolbox.Volley;
+
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -46,9 +49,10 @@ public class ChatMainActivitiy extends AppCompatActivity {
         /*UserData userData = new UserData(R.id.image,mA.userID,mA.userPassword);
         arrayList.add(userData);
         recyclerAdapter.notifyDataSetChanged();*/
-        /*try {
-            Toast.makeText(getApplicationContext(),"여기까진 되는듯#1-1",Toast.LENGTH_SHORT).show();
-            JSONObject jsonObject = new JSONObject(intent.getStringExtra("response"));
+
+        try {
+            //Toast.makeText(getApplicationContext(),"여기까진 되는듯#1-1",Toast.LENGTH_SHORT).show();
+            JSONObject jsonObject = new JSONObject("response");
             Toast.makeText(getApplicationContext(),"여기까진 되는듯#1-2",Toast.LENGTH_SHORT).show();
             JSONArray jsonArray = jsonObject.getJSONArray(("response"));
             Toast.makeText(getApplicationContext(),"여기까진 되는듯#1-3",Toast.LENGTH_SHORT).show();
@@ -70,6 +74,7 @@ public class ChatMainActivitiy extends AppCompatActivity {
 
         } catch (Exception e) {
             e.printStackTrace();
-        }*/
+        }
+
     }
 }

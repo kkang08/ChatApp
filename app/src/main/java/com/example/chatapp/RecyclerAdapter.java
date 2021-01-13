@@ -20,7 +20,7 @@ import java.util.Map;
 
 public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.CustomViewHolder> {
 
-    final static private String URL = "http://kkang.dothome.co.kr/imformation.php";
+    //final static private String URL = "http://kkang.dothome.co.kr/imformation.php";
 
     private ArrayList<UserData> arrayList;
     public RecyclerAdapter(ArrayList<UserData> arrayList) {
