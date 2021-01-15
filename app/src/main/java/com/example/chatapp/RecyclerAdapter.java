@@ -44,7 +44,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.Custom
 
     @Override
     public int getItemCount() {
-        return arrayList.size();
+        return null!=arrayList ?arrayList.size():0;
     }
 
     public class CustomViewHolder extends RecyclerView.ViewHolder {

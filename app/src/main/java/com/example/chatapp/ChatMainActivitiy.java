@@ -30,6 +30,8 @@ public class ChatMainActivitiy extends AppCompatActivity {
     private LinearLayoutManager linearLayoutManager;
     //private MainActivity mA;
 
+    final static private String URL = "http://kkang.dothome.co.kr/imformation.php";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,7 +53,7 @@ public class ChatMainActivitiy extends AppCompatActivity {
         recyclerAdapter.notifyDataSetChanged();*/
 
         try {
-            //Toast.makeText(getApplicationContext(),"여기까진 되는듯#1-1",Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(),"여기까진 되는듯#1-1",Toast.LENGTH_SHORT).show();
             JSONObject jsonObject = new JSONObject("response");
             Toast.makeText(getApplicationContext(),"여기까진 되는듯#1-2",Toast.LENGTH_SHORT).show();
             JSONArray jsonArray = jsonObject.getJSONArray(("response"));
