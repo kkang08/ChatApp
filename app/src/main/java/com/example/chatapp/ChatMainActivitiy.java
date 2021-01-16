@@ -29,9 +29,8 @@ public class ChatMainActivitiy extends AppCompatActivity {
     private RecyclerView recyclerView;
     private LinearLayoutManager linearLayoutManager;
     //private MainActivity mA;
-
-    final static private String URL = "http://kkang.dothome.co.kr/imformation.php";
-
+    final static private String url_data = "http://kkang.dothome.co.kr/imformation.php";
+    private getPHP getphp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,17 +40,26 @@ public class ChatMainActivitiy extends AppCompatActivity {
         recyclerView = findViewById(R.id.RecyclerView);
         linearLayoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(linearLayoutManager);
-        //Intent intent = getIntent();
 
         arrayList = new ArrayList<>();
         recyclerAdapter = new RecyclerAdapter(arrayList);
         recyclerView.setAdapter(recyclerAdapter);
+
+        //arrayList.clear();
+        recyclerAdapter.notifyDataSetChanged();
+
+        getphp = new getPHP();
+        getphp.execute();
+
+        Toast.makeText(getApplicationContext(),"확인: 왜 안됨? "+getphp,Toast.LENGTH_LONG).show();
+        System.out.println(arrayList);
+
         //Toast.makeText(getApplicationContext(),"여기까진 되는듯#1",Toast.LENGTH_SHORT).show();
       //  mA = (MainActivity)getApplicationContext();
         /*UserData userData = new UserData(R.id.image,mA.userID,mA.userPassword);
         arrayList.add(userData);
         recyclerAdapter.notifyDataSetChanged();*/
-
+/*
         try {
             Toast.makeText(getApplicationContext(),"여기까진 되는듯#1-1",Toast.LENGTH_SHORT).show();
             JSONObject jsonObject = new JSONObject("response");
@@ -77,6 +85,6 @@ public class ChatMainActivitiy extends AppCompatActivity {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
+*/
     }
 }
