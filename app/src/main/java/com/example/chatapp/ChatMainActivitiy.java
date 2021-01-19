@@ -5,6 +5,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -19,6 +20,7 @@ import com.android.volley.toolbox.Volley;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.sql.SQLData;
 import java.util.ArrayList;
 import java.util.Map;
 
@@ -28,7 +30,6 @@ public class ChatMainActivitiy extends AppCompatActivity {
     private RecyclerAdapter recyclerAdapter;
     private RecyclerView recyclerView;
     private LinearLayoutManager linearLayoutManager;
-    //private MainActivity mA;
     final static private String url_data = "http://kkang.dothome.co.kr/imformation.php";
     private getPHP getphp;
 
@@ -41,18 +42,18 @@ public class ChatMainActivitiy extends AppCompatActivity {
         linearLayoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(linearLayoutManager);
 
+
+        getphp = new getPHP();
+        getphp.execute("http://kkang.dothome.co.kr/imformation.php");
+
         arrayList = new ArrayList<>();
         recyclerAdapter = new RecyclerAdapter(arrayList);
         recyclerView.setAdapter(recyclerAdapter);
 
-        //arrayList.clear();
-        recyclerAdapter.notifyDataSetChanged();
-
-        getphp = new getPHP();
-        getphp.execute();
-
-        Toast.makeText(getApplicationContext(),"확인: 왜 안됨? "+getphp,Toast.LENGTH_LONG).show();
         System.out.println(arrayList);
+        //arrayList.get(getphp);
+        //Toast.makeText(getApplicationContext(),"확인: 왜 안됨? "+getphp,Toast.LENGTH_LONG).show();
+      //  System.out.println(getphp);
 
         //Toast.makeText(getApplicationContext(),"여기까진 되는듯#1",Toast.LENGTH_SHORT).show();
       //  mA = (MainActivity)getApplicationContext();
