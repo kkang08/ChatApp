@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.SimpleAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.Toolbar;
@@ -18,10 +19,13 @@ import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.Volley;
 
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.net.URL;
 import java.sql.SQLData;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Map;
 
 public class ChatMainActivitiy extends AppCompatActivity {
@@ -31,7 +35,6 @@ public class ChatMainActivitiy extends AppCompatActivity {
     private RecyclerView recyclerView;
     private LinearLayoutManager linearLayoutManager;
     final static private String url_data = "http://kkang.dothome.co.kr/imformation.php";
-    private getPHP getphp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,18 +42,32 @@ public class ChatMainActivitiy extends AppCompatActivity {
         setContentView(R.layout.activity_chat_main_activitiy);
 
         recyclerView = findViewById(R.id.RecyclerView);
+        arrayList = new ArrayList<>();
+
+        /*try {
+            JSONObject jsonObject = new JSONObject(url_data);
+            JSONArray jsonArray = jsonObject.getJSONArray("userName");
+            JSONArray jsonArray1 = jsonObject.getJSONArray("userEmail");
+
+            System.out.println("userName"+jsonArray+"userEmail"+jsonArray1);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }*/
+        //arrayList.add(a);
+       //arrayList.add(R.id.image, URL.setURLStreamHandlerFactory("userName"));
+
         linearLayoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(linearLayoutManager);
 
-
-        getphp = new getPHP();
-        getphp.execute("http://kkang.dothome.co.kr/imformation.php");
-
-        arrayList = new ArrayList<>();
         recyclerAdapter = new RecyclerAdapter(arrayList);
         recyclerView.setAdapter(recyclerAdapter);
 
-        System.out.println(arrayList);
+       // getphp = new getPHP();
+       // getphp.execute("http://kkang.dothome.co.kr/imformation.php");
+
+
+
+        //System.out.println(arrayList);
         //arrayList.get(getphp);
         //Toast.makeText(getApplicationContext(),"확인: 왜 안됨? "+getphp,Toast.LENGTH_LONG).show();
       //  System.out.println(getphp);

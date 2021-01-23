@@ -1,35 +1,56 @@
 package com.example.chatapp;
 
-import android.app.ProgressDialog;
-import android.content.Intent;
 import android.os.AsyncTask;
+import android.widget.SimpleAdapter;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-import java.io.BufferedInputStream;
 import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Map;
 
 public class getPHP extends AsyncTask<String,Void,String> {
 
     final static private String url_data = "http://kkang.dothome.co.kr/imformation.php";
-    String jsonString, i;
-    private ArrayList<UserData> arrayList;
+    String jsonString, i, url_get, jsonData;
+    String returnText = "";
+
+    private static final String TAG_Name = "userName";
+    private static final String TAG_Email = "userEmail";
+
+    private ArrayList<HashMap<String, String>> arrayList;
 
 
     @Override
     protected String doInBackground(String... strings) {
-        //String server = params[0];
+        try {
+            URL url = new URL(url_get);
+            HttpURLConnection conn =  (HttpURLConnection) url.openConnection();
+            conn.setRequestProperty("Name", "name");
+            conn.setRequestProperty("Email","email");
+            conn.setRequestProperty("Accept","applicatin/json");
+            conn.setRequestMethod("GET");
+            conn.connect();
 
-        return null;
+            BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+            StringBuffer sb = new StringBuffer();
+
+            while ((jsonData = br.readLine())!= null) {
+                sb.append(jsonData);
+            }
+            returnText =sb.toString();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        //return null;
+        return returnText;
     }
 
     @Override
@@ -57,6 +78,15 @@ public class getPHP extends AsyncTask<String,Void,String> {
 
             while (i != null) {
                 JSONObject jO = jsonObject.getJSONObject(i);
+
+                String name =  jO.getString(TAG_Name);
+                String email = jO.getString(TAG_Email);
+
+                HashMap<String, String> hashMap = new HashMap<>();
+                hashMap.put(TAG_Name,name);
+                hashMap.put(TAG_Email,email);
+
+                arrayList.add(hashMap);
             }
 
         } catch (Exception e) {

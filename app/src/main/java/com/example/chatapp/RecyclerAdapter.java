@@ -20,12 +20,13 @@ import java.util.Map;
 
 public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.CustomViewHolder> {
 
-    //final static private String URL = "http://kkang.dothome.co.kr/imformation.php";
+    final static private String URL = "http://kkang.dothome.co.kr/imformation.php";
 
     private ArrayList<UserData> arrayList;
     public RecyclerAdapter(ArrayList<UserData> arrayList) {
         this.arrayList = arrayList;
     }
+
 
     @NonNull
     @Override
@@ -38,7 +39,12 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.Custom
     @Override
     public void onBindViewHolder(@NonNull RecyclerAdapter.CustomViewHolder holder, int position) {
 
-        holder.itemview(arrayList.get(position));
+        holder.image.setImageResource(arrayList.get(position).getImage());
+        holder.et_name.setText(arrayList.get(position).getEt_name());
+        holder.et_email.setText(arrayList.get(position).getEt_email());
+
+       // holder.itemview(arrayList.get(position));
+        holder.itemView.setTag(arrayList.get(position));
 
     }
 
@@ -62,8 +68,11 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.Custom
 
         public void itemview(UserData userData) {
             image.setImageResource(userData.getImage());
-            et_name.setText(userData.getEt_name());
-            et_email.setText(userData.getEt_email());
+            //et_name.setText(userData.getEt_name());
+            //et_email.setText(userData.getEt_email());
+
+            et_name.setText(arrayList.get(URL.indexOf("userName")).getEt_name());
+            et_email.setText(arrayList.get(URL.indexOf("userEmail")).getEt_email());
         }
     }
 
