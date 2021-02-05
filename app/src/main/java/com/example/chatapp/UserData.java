@@ -1,6 +1,6 @@
 package com.example.chatapp;
 
-import java.util.ArrayList;
+import android.graphics.drawable.Drawable;
 
 public class UserData {
 
